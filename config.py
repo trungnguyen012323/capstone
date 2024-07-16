@@ -27,7 +27,7 @@ bearer_tokens = {
 database_name = "capstone_ij6c"
 username = "admin"
 password = "mdgeROO3iXnZKd6UkxB8AO2J0Xmijtq8"
-database_path = "postgresql://{}:{}@dpg-cqb9mtaju9rs73bkqf5g-a:5432/{}".format(username, password, database_name)
+database_path = "postgresql://{}:{}@dpg-cqb9mtaju9rs73bkqf5g-a.oregon-postgres.render.com:5432/{}".format(username, password, database_name)
 
 
 def database_setup(app):
