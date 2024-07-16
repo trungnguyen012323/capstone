@@ -24,10 +24,10 @@ bearer_tokens = {
 }
 
 # Database setup
-database_name = "capstone"
-username = "postgres"
-password = "12345"
-database_path = "postgresql://{}:{}@localhost:5432/{}".format(username, password, database_name)
+database_name = "capstone_ij6c"
+username = "admin"
+password = "mdgeROO3iXnZKd6UkxB8AO2J0Xmijtq8"
+database_path = "postgresql://{}:{}@dpg-cqb9mtaju9rs73bkqf5g-a:5432/{}".format(username, password, database_name)
 
 
 def database_setup(app):
