@@ -17,7 +17,7 @@ It covers following technical topics in 1 app:
 2. API to performance CRUD Operations on database with `Flask` (see `app.py`)
 3. Automated testing with `Unittest` (see `test_app`)
 4. Authorization & Role based Authentification with `Auth0` (see `auth.py`)
-5. Deployment on `Heroku`
+5. Deployment on `OnRender`
 
 <a name="start-locally"></a>
 ## Start Project locally
@@ -39,7 +39,7 @@ To start and run the local development server,
 $ pip install -r requirements.txt
 ```
 
-Running this project locally means that it can´t access `Herokus` env variables.
+Running this project locally means that it can´t access `OnRender` env variables.
 To fix this, you need to edit a few informations in `config.py`, so it can
 correctly connect to a local database
 
@@ -48,10 +48,10 @@ correctly connect to a local database
 - Here you can see this dict:
  ```python
 database_setup = {
-    "database_name_production" : "agency",
-    "user_name" : "postgres", # default postgres user name
-    "password" : "testpassword123", # if applicable. If no password, just type in None
-    "port" : "localhost:5432" # default postgres port
+    "database_name_production" : "capstone_ij6c",
+    "user_name" : "admin", # default postgres user name
+    "password" : "mdgeROO3iXnZKd6UkxB8AO2J0Xmijtq8", # if applicable. If no password, just type in None
+    "hostport" : "dpg-cqb9mtaju9rs73bkqf5g-a.oregon-postgres.render.com:5432" # default postgres port
 }
 ```
 
@@ -96,7 +96,7 @@ Additionally, common pitfalls & error messages are explained, if applicable.
 
 ### Base URL
 
-**_https://artist-capstone-fsnd.herokuapp.com_**
+**_https://capstone-omyh.onrender.com/_**
 
 ### Authentification
 
@@ -141,7 +141,7 @@ Each ressource documentation is clearly structured:
 Query paginated actors.
 
 ```bash
-$ curl -X GET https://artist-capstone-fsnd.herokuapp.com/actors?page1
+$ curl -X GET https://capstone-omyh.onrender.com/actors?page=1
 ```
 - Fetches a list of dictionaries of examples in which the keys are the ids with all available fields
 - Request Arguments: 
@@ -174,7 +174,7 @@ $ curl -X GET https://artist-capstone-fsnd.herokuapp.com/actors?page1
 If you try fetch a page which does not have any actors, you will encounter an error which looks like this:
 
 ```bash
-$ curl -X GET https://artist-capstone-fsnd.herokuapp.com/actors?page123124
+$ curl -X GET https://capstone-omyh.onrender.com/actors?page=123124
 ```
 
 will return
@@ -193,7 +193,7 @@ will return
 Insert new actor into database.
 
 ```bash
-$ curl -X POST https://artist-capstone-fsnd.herokuapp.com/actors
+$ curl -X POST https://capstone-omyh.onrender.com/actors
 ```
 
 - Request Arguments: **None**
@@ -219,7 +219,7 @@ If you try to create a new actor without a requiered field like `name`,
 it will throw a `422` error:
 
 ```bash
-$ curl -X GET https://artist-capstone-fsnd.herokuapp.com/actors?page123124
+$ curl -X GET https://capstone-omyh.onrender.com/actors?page=123124
 ```
 
 will return
@@ -238,7 +238,7 @@ will return
 Edit an existing Actor
 
 ```bash
-$ curl -X PATCH https://artist-capstone-fsnd.herokuapp.com/actors/1
+$ curl -X PATCH https://capstone-omyh.onrender.com/actors/1
 ```
 
 - Request Arguments: **integer** `id from actor you want to update`
@@ -275,7 +275,7 @@ $ curl -X PATCH https://artist-capstone-fsnd.herokuapp.com/actors/1
 If you try to update an actor with an invalid id it will throw an `404`error:
 
 ```bash
-$ curl -X PATCH https://artist-capstone-fsnd.herokuapp.com/actors/125
+$ curl -X PATCH https://capstone-omyh.onrender.com/actors/125
 ```
 
 will return
@@ -303,7 +303,7 @@ Additionally, trying to update an Actor with already existing field values will 
 Delete an existing Actor
 
 ```bash
-$ curl -X DELETE https://artist-capstone-fsnd.herokuapp.com/actors/1
+$ curl -X DELETE https://capstone-omyh.onrender.com/actors/1
 ```
 
 - Request Arguments: **integer** `id from actor you want to delete`
@@ -325,7 +325,7 @@ $ curl -X DELETE https://artist-capstone-fsnd.herokuapp.com/actors/1
 If you try to delete actor with an invalid id, it will throw an `404`error:
 
 ```bash
-$ curl -X DELETE https://artist-capstone-fsnd.herokuapp.com/actors/125
+$ curl -X DELETE https://capstone-omyh.onrender.com/actors/125
 ```
 
 will return
@@ -344,7 +344,7 @@ will return
 Query paginated movies.
 
 ```bash
-$ curl -X GET https://artist-capstone-fsnd.herokuapp.com/movies?page1
+$ curl -X GET https://capstone-omyh.onrender.com/movies?page=1
 ```
 - Fetches a list of dictionaries of examples in which the keys are the ids with all available fields
 - Request Arguments: 
@@ -376,7 +376,7 @@ $ curl -X GET https://artist-capstone-fsnd.herokuapp.com/movies?page1
 If you try fetch a page which does not have any movies, you will encounter an error which looks like this:
 
 ```bash
-$ curl -X GET https://artist-capstone-fsnd.herokuapp.com/movies?page123124
+$ curl -X GET https://capstone-omyh.onrender.com/movies
 ```
 
 will return
@@ -395,7 +395,7 @@ will return
 Insert new Movie into database.
 
 ```bash
-$ curl -X POST https://artist-capstone-fsnd.herokuapp.com/movies
+$ curl -X POST https://capstone-omyh.onrender.com/movies
 ```
 
 - Request Arguments: **None**
@@ -419,7 +419,7 @@ If you try to create a new movie without a requiered field like `name`,
 it will throw a `422` error:
 
 ```bash
-$ curl -X GET https://artist-capstone-fsnd.herokuapp.com/movies?page123124
+$ curl -X GET https://capstone-omyh.onrender.com/movies?name=123
 ```
 
 will return
@@ -427,7 +427,7 @@ will return
 ```js
 {
   "error": 422,
-  "message": "no name provided.",
+  "message": "no movie found in database.",
   "success": false
 }
 ```
@@ -438,7 +438,7 @@ will return
 Edit an existing Movie
 
 ```bash
-$ curl -X PATCH https://artist-capstone-fsnd.herokuapp.com/movies/1
+$ curl -X PATCH https://capstone-omyh.onrender.com/movies/1
 ```
 
 - Request Arguments: **integer** `id from movie you want to update`
@@ -473,7 +473,7 @@ $ curl -X PATCH https://artist-capstone-fsnd.herokuapp.com/movies/1
 If you try to update an movie with an invalid id it will throw an `404`error:
 
 ```bash
-$ curl -X PATCH https://artist-capstone-fsnd.herokuapp.com/movies/125
+$ curl -X PATCH https://capstone-omyh.onrender.com/movies/125
 ```
 
 will return
@@ -501,7 +501,7 @@ Additionally, trying to update an Movie with already existing field values will 
 Delete an existing movie
 
 ```bash
-$ curl -X DELETE https://artist-capstone-fsnd.herokuapp.com/movies/1
+$ curl -X DELETE https://capstone-omyh.onrender.com/movies/1
 ```
 
 - Request Arguments: **integer** `id from movie you want to delete`
@@ -523,7 +523,7 @@ $ curl -X DELETE https://artist-capstone-fsnd.herokuapp.com/movies/1
 If you try to delete movie with an invalid id, it will throw an `404`error:
 
 ```bash
-$ curl -X DELETE https://artist-capstone-fsnd.herokuapp.com/movies/125
+$ curl -X DELETE https://capstone-omyh.onrender.com/movies/125
 ```
 
 will return
@@ -533,6 +533,20 @@ will return
   "error": 404,
   "message": "Movie with id 125 not found in database.",
   "success": false
+}
+```
+
+### login to get token
+```bash
+$ curl -X POST https://capstone-omyh.onrender.com/login
+```
+
+will return
+
+```json
+{
+    "data": "{\"access_token\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkZiTDNkNjBMOXpZMG5uX2NzM1J0eiJ9.eyJpc3MiOiJodHRwczovL2Rldi1pdXhpa2pyd3d1YTN4bTJwLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJnNWdtUW1GRVcyZXJaMjlkQURBUzJLRjRJaFp2SjNtR0BjbGllbnRzIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAwIiwiaWF0IjoxNzIxMjMzNDc4LCJleHAiOjE3MjEzMTk4NzgsInNjb3BlIjoiZWRpdDptb3ZpZXMgZGVsZXRlOm1vdmllcyBjcmVhdGU6bW92aWVzIHJlYWQ6bW92aWVzIGRlbGV0ZTphY3RvcnMgZWRpdDphY3RvcnMgY3JlYXRlOmFjdG9ycyByZWFkOmFjdG9ycyIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyIsImF6cCI6Imc1Z21RbUZFVzJlcloyOWRBREFTMktGNEloWnZKM21HIn0.1eACbZWFATkVjDMfIDpMsClFxqqcHG6RzSdcO4imhNrO42Ip4G6ZuCsmEaTNHCQVVLRf7jQkgVeNfv2pXFj36XET5hXbBYiszoGY75SvakWHdh4hhBm9M7apIbl-m2nl8XWYX9cmKWFyYQH5O9cKFYU26TI2lwE59ve7rWdDvIjNmGAVFbr13Rjj04DUdv3sA47pZWi2__ofigTwqikk15zCLPE4AKs0O61jyg7-DD1h92uzIDx3Cgjpk5hN-WCMfxSs8y9Wmdd2jbcqCZ39Py2MsAK_hT8WYj17OicY1LgE-xWMoUx5aU6IcvLYJ06fwHuqAVxOGwzGzn8tIPXQfw\",\"scope\":\"edit:movies delete:movies create:movies read:movies delete:actors edit:actors create:actors read:actors\",\"expires_in\":86400,\"token_type\":\"Bearer\"}",
+    "success": true
 }
 ```
 
